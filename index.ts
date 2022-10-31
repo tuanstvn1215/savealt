@@ -11,6 +11,7 @@ db.run()
   .catch((error) => {
     console.log(error);
   });
+  app.get('/hello', (req, res) => res.send('hello'))
 app.post("/save", async (req: Request, res: Response) => {
   try {
     const accounts: [] = req.body.accounts;
