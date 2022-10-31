@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from "express";
 import { AccountAltGenModel } from "./account";
 import * as db from "./db";
 
-const PORT: number = parseInt("8080");
+const PORT: number = process.env.PORT ? parseInt(process.env.PORT) : parseInt("8080");
 const app: Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -11,7 +11,7 @@ db.run()
   .catch((error) => {
     console.log(error);
   });
-  app.get('/hello', (req, res) => res.send('hello'))
+app.get("/hello", (req, res) => res.send("hello"));
 app.post("/save", async (req: Request, res: Response) => {
   try {
     const accounts: [] = req.body.accounts;
